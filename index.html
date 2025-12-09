@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist de Validación - SEB-LIN GLOBAL LEARNING</title>
+    <style>
+        /* Paleta de Colores SEB-LIN: Azul Oscuro/Negro (Fondo), Azul Cian y Naranja (Acentos) */
+        :root {
+            --color-primary: #007bff; /* Azul Cian/Brillante para el logo y ticks (Simulación) */
+            --color-secondary: #ff7f00; /* Naranja/Amarillo para líneas y subtítulos (Simulación) */
+            --color-background: #0d1a26; /* Fondo Oscuro, profesional */
+            --color-text-light: #f0f8ff; /* Texto Blanco */
+            --color-card-bg: #1a2a3a; /* Fondo de tarjetas */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-light);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background-color: #112233; /* Ligero contraste */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--color-secondary);
+        }
+
+        header h1 {
+            font-size: 2.2em;
+            color: var(--color-text-light);
+            margin-bottom: 5px;
+        }
+
+        header h2 {
+            font-size: 1.1em;
+            color: var(--color-primary);
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        /* --- Estilo del Checklist --- */
+        .section-title {
+            font-size: 1.6em;
+            color: var(--color-secondary);
+            margin-top: 30px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid rgba(255, 127, 0, 0.3);
+        }
+
+        .checklist-group {
+            margin-bottom: 30px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: var(--color-card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            transform: translateY(-2px);
+            background-color: #243b55;
+        }
+
+        .checkbox-container {
+            position: relative;
+            margin-right: 15px;
+            top: 2px;
+        }
+
+        .checkbox-container input {
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 22px;
+            width: 22px;
+            background-color: #334455;
+            border: 2px solid #556677;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .checklist-container input:checked ~ .checkmark {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .checklist-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checklist-container .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        .item-content {
+            flex-grow: 1;
+        }
+
+        .item-content h3 {
+            font-size: 1.1em;
+            margin: 0;
+            color: var(--color-text-light);
+        }
+
+        .item-content p {
+            font-size: 0.9em;
+            color: #b0c4de;
+            margin-top: 5px;
+        }
+
+        /* Efecto de Tachar al Completar */
+        .checklist-container input:checked ~ .item-content h3 {
+            text-decoration: line-through;
+            color: #556677;
+        }
+        .checklist-container input:checked ~ .item-content p {
+            color: #445566;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>DOCUMENTO OFICIAL DE SEB-LIN GLOBAL LEARNING</h1>
+            <h2>Checklist de Validación de Programas ante el Ministerio de Educación</h2>
+        </header>
+
+        <p>Esta lista guía los pasos esenciales para formalizar los programas de Formación Continua Técnica Online (**Talleres Piloto**) ante la instancia competente del Ministerio de Educación de Bolivia (Viceministerio de Educación Alternativa y Especial o DGFC).</p>
+
+        <div class="checklist-group">
+            <h3 class="section-title">I. Formalización Legal e Institucional</h3>
+            
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check1" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>1. Personería Jurídica de SEB-LIN</h3>
+                    <p>Documento legal que acredita la existencia de la institución (Registro ante el Gobierno o instancia pertinente).</p>
+                </div>
+            </label>
+
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check2" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>2. Registro en Impuestos Nacionales (NIT)</h3>
+                    <p>Número de Identificación Tributaria vigente.</p>
+                </div>
+            </label>
+
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check3" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>3. Registro en FUNDEMPRESA</h3>
+                    <p>Certificado de inscripción en el Registro de Comercio (si aplica a la figura legal).</p>
+                </div>
+            </label>
+        </div>
+
+        <div class="checklist-group">
+            <h3 class="section-title">II. Formalización Académica y Curricular</h3>
+            
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check4" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>4. Programas de Formación Completos (3 Pilotos)</h3>
+                    <p>Presentación formal de los programas (IED, CCTV, ICEE) con toda la estructura: Competencias, Saberes Esenciales y Matriz de Evaluación.</p>
+                </div>
+            </label>
+
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check5" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>5. Alineación Curricular (MESCP)</h3>
+                    <p>Documento que demuestre la alineación de los "Saberes Esenciales" a las dimensiones Ser-Saber-Hacer-Decidir (Exigencia de la RM 001/2021).</p>
+                </div>
+            </label>
+
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check6" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>6. Protocolo de Evaluación Final Única</h3>
+                    <p>Documento que detalla el sistema de evaluación única (100% en el Trabajo Final), criterios de aprobación (Ej. 70 puntos) y la matriz de competencia.</p>
+                </div>
+            </label>
+
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check7" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>7. Memoria de la Plataforma E-learning</h3>
+                    <p>Descripción técnica de la plataforma (LMS), garantía de acceso, seguridad de recursos y protocolo de seguimiento personalizado.</p>
+                </div>
+            </label>
+        </div>
+
+        <div class="checklist-group">
+            <h3 class="section-title">III. Equipo Docente y Solicitud Formal</h3>
+            
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check8" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>8. Documentación de Instructores</h3>
+                    <p>Copia legalizada de Títulos Profesionales y CV documentado del equipo docente (expertos de la industria).</p>
+                </div>
+            </label>
+
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check9" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>9. Solicitud Formal de Aval</h3>
+                    <p>Memorial dirigido al Viceministerio de Educación Alternativa y Especial (VEAE) o a la DGFC, solicitando la aprobación de los programas.</p>
+                </div>
+            </label>
+
+            <label class="checklist-item checklist-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="check10" onclick="toggleStrike(this)">
+                    <span class="checkmark"></span>
+                </div>
+                <div class="item-content">
+                    <h3>10. Carpeta Foliada y Aranceles</h3>
+                    <p>Organización de toda la documentación y pago de las tasas administrativas requeridas por el Ministerio.</p>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        // Función para manejar el tachado y guardar el estado
+        function toggleStrike(checkbox) {
+            const label = checkbox.closest('.checklist-container');
+            if (checkbox.checked) {
+                label.classList.add('completed');
+            } else {
+                label.classList.remove('completed');
+            }
+            saveState();
+        }
+
+        // Función para guardar el estado del checklist en el almacenamiento local del navegador
+        function saveState() {
+            const checkboxes = document.querySelectorAll('.checklist-container input[type="checkbox"]');
+            const state = {};
+            checkboxes.forEach(checkbox => {
+                state[checkbox.id] = checkbox.checked;
+            });
+            localStorage.setItem('seblinChecklistState', JSON.stringify(state));
+        }
+
+        // Función para cargar el estado del checklist al abrir la página
+        function loadState() {
+            const savedState = localStorage.getItem('seblinChecklistState');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                for (const id in state) {
+                    const checkbox = document.getElementById(id);
+                    if (checkbox) {
+                        checkbox.checked = state[id];
+                        // Aplicar el estilo de tachado al cargar
+                        const label = checkbox.closest('.checklist-container');
+                        if (checkbox.checked) {
+                            label.classList.add('completed');
+                        } else {
+                            label.classList.remove('completed');
+                        }
+                    }
+                }
+            }
+        }
+
+        // Cargar el estado al cargar la página
+        window.onload = loadState;
+    </script>
+
+</body>
+</html>
